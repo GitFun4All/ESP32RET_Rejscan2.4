@@ -92,7 +92,7 @@ void loadSettings()
     settings.logLevel = nvPrefs.getUChar("loglevel", 1); //info
     settings.wifiMode = nvPrefs.getUChar("wifiMode", 2); //Wifi defaults to creating an AP
     settings.enableBT = nvPrefs.getBool("enable-bt", false);
-    settings.enableLawicel = nvPrefs.getBool("enableLawicel", true);
+    settings.enableLawicel = nvPrefs.getBool("enableLawicel", false);
     settings.systemType = nvPrefs.getUChar("systype", 3); //default to ESP32RET (hopefully)
 
     uint8_t defaultVal = (espChipRevision > 2) ? 0 : 1; //0 = A0, 1 = EVTV ESP32
@@ -251,7 +251,8 @@ void loadSettings()
         SysSettings.lawicellExtendedMode = false;
         SysSettings.lawicelTimestamping = false;
         SysSettings.numBuses = 1;
-        SysSettings.isWifiActive = false;
+        SysSettings.isWifiActive = true;
+        // SysSettings.isWifiActive = false;
         SysSettings.isWifiConnected = false;
         strcpy(deviceName, "Rejscan_2.4");
         strcpy(otaHost, "notset.lan");
